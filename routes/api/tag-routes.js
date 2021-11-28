@@ -40,14 +40,22 @@ router.post('/', (req, res) => {
   // create a new tag
   Tag.create(req.body)
     .then(tag => {
-      console.log(tag);
       res.status(200).send(`Tag added succesfully!`);
-    });
+    })
+    .catch(res.status(500))
   
 });
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+  const id = req.params.id;
+  Tag.update(req.body, {
+    where: {
+      id: id
+    }
+  })
+    .then(res.status(200).send(`Tag name updated successfully!`))
+    .catch(res.status(500));
 });
 
 router.delete('/:id', (req, res) => {
