@@ -32,8 +32,6 @@ router.get('/:id', (req, res) => {
     .catch(err => {
       res.status(500).json(err);
     })
-  
-  // be sure to include its associated Product data
 });
 
 router.post('/', (req, res) => {
