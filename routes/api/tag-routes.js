@@ -38,6 +38,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
+  Tag.create(req.body)
+    .then(tag => {
+      console.log(tag);
+      res.status(200).send(`Tag added succesfully!`);
+    });
+  
 });
 
 router.put('/:id', (req, res) => {
